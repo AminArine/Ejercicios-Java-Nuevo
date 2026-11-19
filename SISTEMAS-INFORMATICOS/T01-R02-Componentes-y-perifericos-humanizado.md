@@ -23,18 +23,20 @@ Para sacar la información desde la consola uso dos herramientas: el Símbolo de
   Get-CimInstance Win32_PhysicalMemory | Select-Object Manufacturer, PartNumber, SerialNumber, Capacity, Speed
   ```
 
-La capacidad sale en bytes, así que hay que dividirla entre 1.073.741.824 para pasarla a GB.
-
 ![Captura del terminal powershell,datos de la RAM](capturasdecomandos/Get-CimInstance%20Win32_PhysicalMemory.PNG )
 **Datos de mi RAM** 
 
 | Dato | Valor |
 |---|---|
-| Fabricante | [Silicon-Power] |
-| Modelo (PartNumber) | [RELLENAR] |
-| Número de serie | [00000000] |
-| Capacidad | [16] GB |
-| Velocidad | [2666] MHz |
+| Fabricante | Silicon-Power |
+| Modelo (PartNumber) | RELLENAR |
+| Número de serie | 00000000 |
+| Capacidad | 16 GB |
+| Velocidad | 2666 MHz |
+
+
+---
+
 
 **Monitor** (fabricante, modelo y número de serie, más la definición de la pantalla):
 
@@ -59,14 +61,15 @@ La capacidad sale en bytes, así que hay que dividirla entre 1.073.741.824 para 
   wmic /namespace:\\root\wmi path WmiMonitorID get ManufacturerName, ProductCodeID, SerialNumberID, UserFriendlyName
   ```
   En el segundo comando los valores salen en decimal (códigos ASCII), así que habría que traducirlos a texto.
+![Captura del terminal powershell,datos deL monitor](capturasdecomandos/Modelomonitor.PNG )
 
-> 📸 **[AQUÍ CAPTURA 2]** – Comandos del monitor (fabricante/modelo/serie) y su resultado.
-> *(`capturas/captura2.png`)*
->
-> 📸 **[AQUÍ CAPTURA 3]** – Comando de la resolución con su resultado.
-> *(`capturas/captura3.png`)*
+![Captura del terminal powershell,datos de la resolucion del monitor](capturasdecomand/Resoluciondelapantalla.PNG )
 
-**Datos de mi monitor** *(⚠️ RELLENA)*:
+
+---
+
+
+**Datos de mi monitor** 
 
 | Dato | Valor |
 |---|---|
@@ -90,13 +93,8 @@ Para ver el procesador con una sola instrucción uso:
 
 Otra forma muy cómoda es el Administrador de tareas (`Ctrl+Shift+Esc` → pestaña *Rendimiento* → *CPU*), donde aparecen también las cachés L1, L2 y L3.
 
-> 📸 **[AQUÍ CAPTURA 4]** – Comando del procesador con su resultado.
-> *(`capturas/captura4.png`)*
->
-> 📸 **[AQUÍ CAPTURA 5]** – Administrador de tareas → Rendimiento → CPU, con las cachés y los núcleos a la vista.
-> *(`capturas/captura5.png`)*
-
-Con esos datos contesto a las cuestiones *(⚠️ RELLENA con los datos de tu CPU)*:
+![Captura del terminal powershell,datos del procesador](capturasdecomandos/Procesador.PNG )
+![Captura del terminal powershell,datos del procesador](capturasdecomandos/cacheprocesador.PNG )
 
 **¿Cuál es su fabricante, modelo y generación o familia?**
 El fabricante es **[RELLENAR: Intel / AMD]**, el modelo es **[RELLENAR: por ejemplo, i5-12400]** y pertenece a la **[RELLENAR]** generación/familia.
