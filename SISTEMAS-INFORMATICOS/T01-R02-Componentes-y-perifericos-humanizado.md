@@ -96,6 +96,7 @@ Otra forma muy cómoda es el Administrador de tareas (`Ctrl+Shift+Esc` → pesta
 ![Captura del terminal powershell,datos del procesador](capturasdecomandos/Procesador.PNG )
 ![Captura del terminal powershell,datos del procesador](capturasdecomandos/cacheprocesador.PNG )
 
+<!--
 **¿Cuál es su fabricante, modelo y generación o familia?**
 El fabricante es **[RELLENAR: Intel / AMD]**, el modelo es **[RELLENAR: por ejemplo, i5-12400]** y pertenece a la **[RELLENAR]** generación/familia.
 *(Ayuda: en Intel la generación se ve en las primeras cifras del número, así que un i5-12400 es de 12.ª generación y un i7-8700 de 8.ª. En AMD Ryzen se mira la serie: un Ryzen 5 5600X es de la serie 5000.)*
@@ -109,6 +110,19 @@ Tiene **[RELLENAR] KB/MB de L2** y **[RELLENAR] MB de L3** (la L1 aparece en el 
 
 **¿Cuántos núcleos tiene?**
 Tiene **[RELLENAR] núcleos físicos** y **[RELLENAR] procesadores lógicos (hilos)**.
+-->
+**¿Cuál es su fabricante, modelo y generación o familia?**  
+El fabricante es **AMD**, el modelo es **Ryzen 3 PRO 4350G** y pertenece a la **serie 4000 (arquitectura Zen 2 / Renoir)**.
+
+**¿Cuál es su velocidad máxima de reloj? ¿Está preparado para overclock?**  
+Su velocidad máxima es de **3,80 GHz** (base). El valor `MaxClockSpeed` que da Windows suele ser la frecuencia base, así que la frecuencia máxima en turbo es **4,0 GHz** (según la ficha oficial de AMD).  
+Sobre el overclock: en AMD Ryzen casi todos son desbloqueables. Mi procesador **sí** está preparado para overclock (aunque al ser modelo PRO es más habitual usarlo sin overclock).
+
+**¿Cuál es la capacidad de su memoria caché y de qué tipo es?**  
+Tiene **2 MB de L2** y **4 MB de L3** (la L1 aparece en el Administrador de tareas: **256 kB**). La caché es memoria **SRAM**, muy rápida, que se organiza en niveles: L1 (más pequeña y rápida, una por núcleo), L2 y L3 (más grande y compartida entre núcleos).
+
+**¿Cuántos núcleos tiene?**  
+Tiene **4 núcleos físicos** y **8 procesadores lógicos (hilos)**.
 
 ---
 
