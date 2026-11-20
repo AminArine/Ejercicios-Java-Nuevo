@@ -124,9 +124,8 @@ Para valorar los consejos me fijo en la eficiencia mínima que exige la certific
 | 80 Plus Platinum | – | 90 % | 92 % | 89 % |
 | 80 Plus Titanium | 90 % | 92 % | 94 % | 90 % |
 
-> 📸 **[AQUÍ CAPTURA 6 – OPCIONAL]** – La tabla 80 Plus de tus apuntes o de la web oficial, si quieres apoyar los datos.
-> *(`capturas/captura6.png`)*
-![Captura del terminal powershell,datos del procesador](capturasdecomandos/Infografía%2080%20PLUS_%20Eficiencia%20Energética%20a%20115%20V(1).png )
+
+>![Captura del terminal powershell,datos del procesador](capturasdecomandos/Infografía%2080%20PLUS_%20Eficiencia%20Energética%20a%20115%20V(1).png )
 
 
 ### a) El consejo que le han dado a Lucía
@@ -180,9 +179,8 @@ Primero comparo lo que tiene cada uno.
 
 **Conclusión:** les diría que mantengan los teclados y que **se intercambien los ratones**. La diferencia es pequeña, pero cada uno queda con el que mejor encaja con su forma de trabajar.
 
-> 📸 **[AQUÍ CAPTURA 7 – OPCIONAL]** – Fotos de los cuatro productos (de la web del fabricante o de la tienda) para acompañar la tabla.
-> *(`capturas/captura7.png`)*
-![Captura del terminal powershell,datos del procesador](capturasdecomandos/Comparativa%20de%20periféricos_%20teclados%20y%20ratones.png )
+
+>![Captura del terminal powershell,datos del procesador](capturasdecomandos/Comparativa%20de%20periféricos_%20teclados%20y%20ratones.png )
 
 ---
 
@@ -210,10 +208,8 @@ Para que se note bien el efecto estéreo, los altavoces y la persona deben forma
 
 Es decir, cada altavoz queda a unos 47 cm del centro del monitor. Como la pantalla mide unos 70 cm de ancho (35 cm hasta cada borde), cada altavoz quedará unos 12 cm por fuera del borde del monitor. Los colocaría a la altura de los oídos y ligeramente girados hacia mí.
 
-> 📸 **[AQUÍ CAPTURA 8 – OPCIONAL]** – El esquema del enunciado con las distancias anotadas encima (94 cm en la flecha vertical de la silla y 94 cm en la flecha horizontal entre altavoces).
-> *(`capturas/captura8.png`)*
 
-![Captura del terminal powershell,datos del procesador](capturasdecomandos/remove-completely-the-exercise.jpg )
+>![Captura del terminal powershell,datos del procesador](capturasdecomandos/remove-completely-the-exercise.jpg )
 
 
 ---
