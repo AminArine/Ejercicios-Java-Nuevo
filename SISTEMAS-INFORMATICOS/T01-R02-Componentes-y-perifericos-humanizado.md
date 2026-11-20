@@ -24,6 +24,9 @@ Para sacar la información desde la consola uso dos herramientas: el Símbolo de
   ```
 
 ![Captura del terminal powershell,datos de la RAM](capturasdecomandos/Get-CimInstance%20Win32_PhysicalMemory.PNG )
+
+---
+
 **Datos de mi RAM** 
 
 | Dato | Valor |
@@ -63,7 +66,7 @@ Para sacar la información desde la consola uso dos herramientas: el Símbolo de
   En el segundo comando los valores salen en decimal (códigos ASCII), así que habría que traducirlos a texto.
 ![Captura del terminal powershell,datos deL monitor](capturasdecomandos/Modelomonitor.PNG )
 
-![Captura del terminal powershell,datos de la resolucion del monitor](capturasdecomand/Resoluciondelapantalla.PNG )
+![Captura del terminal powershell,datos de la resolucion del monitor](capturasdecomandos/Resoluciondelapantalla.PNG )
 
 
 ---
@@ -73,10 +76,10 @@ Para sacar la información desde la consola uso dos herramientas: el Símbolo de
 
 | Dato | Valor |
 |---|---|
-| Fabricante (código de 3 letras) | [RELLENAR] |
-| Modelo | [RELLENAR] |
-| Número de serie | [RELLENAR] |
-| Definición de pantalla | [RELLENAR] × [RELLENAR] píxeles |
+| Fabricante (código de 3 letras) | HSD |
+| Modelo | HL247HPB |
+| Número de serie | 1234567890123 |
+| Definición de pantalla | 1920 × 1080 píxeles |
 
 ### b) Identificar el procesador sin abrir el ordenador
 
@@ -96,21 +99,7 @@ Otra forma muy cómoda es el Administrador de tareas (`Ctrl+Shift+Esc` → pesta
 ![Captura del terminal powershell,datos del procesador](capturasdecomandos/Procesador.PNG )
 ![Captura del terminal powershell,datos del procesador](capturasdecomandos/cacheprocesador.PNG )
 
-<!--
-**¿Cuál es su fabricante, modelo y generación o familia?**
-El fabricante es **[RELLENAR: Intel / AMD]**, el modelo es **[RELLENAR: por ejemplo, i5-12400]** y pertenece a la **[RELLENAR]** generación/familia.
-*(Ayuda: en Intel la generación se ve en las primeras cifras del número, así que un i5-12400 es de 12.ª generación y un i7-8700 de 8.ª. En AMD Ryzen se mira la serie: un Ryzen 5 5600X es de la serie 5000.)*
 
-**¿Cuál es su velocidad máxima de reloj? ¿Está preparado para overclock?**
-Su velocidad máxima es de **[RELLENAR] GHz**. El valor `MaxClockSpeed` que da Windows suele ser la frecuencia base, así que la frecuencia máxima en turbo la he comprobado en la ficha oficial del fabricante (Intel ARK o la web de AMD).
-Sobre el overclock: en Intel, los procesadores con sufijo **K, KF o KS** tienen el multiplicador desbloqueado y se pueden overclockear, mientras que el resto están bloqueados. En AMD Ryzen casi todos son desbloqueables. Además, hace falta una placa base compatible. Mi procesador **[RELLENAR: sí / no]** está preparado para overclock.
-
-**¿Cuál es la capacidad de su memoria caché y de qué tipo es?**
-Tiene **[RELLENAR] KB/MB de L2** y **[RELLENAR] MB de L3** (la L1 aparece en el Administrador de tareas: **[RELLENAR]**). La caché es memoria **SRAM**, muy rápida, que se organiza en niveles: L1 (más pequeña y rápida, una por núcleo), L2 y L3 (más grande y compartida entre núcleos).
-
-**¿Cuántos núcleos tiene?**
-Tiene **[RELLENAR] núcleos físicos** y **[RELLENAR] procesadores lógicos (hilos)**.
--->
 **¿Cuál es su fabricante, modelo y generación o familia?**  
 El fabricante es **AMD**, el modelo es **Ryzen 3 PRO 4350G** y pertenece a la **serie 4000 (arquitectura Zen 2 / Renoir)**.
 
@@ -137,6 +126,8 @@ Para valorar los consejos me fijo en la eficiencia mínima que exige la certific
 
 > 📸 **[AQUÍ CAPTURA 6 – OPCIONAL]** – La tabla 80 Plus de tus apuntes o de la web oficial, si quieres apoyar los datos.
 > *(`capturas/captura6.png`)*
+![Captura del terminal powershell,datos del procesador](capturasdecomandos/Infografía%2080%20PLUS_%20Eficiencia%20Energética%20a%20115%20V(1).png )
+
 
 ### a) El consejo que le han dado a Lucía
 
@@ -191,6 +182,7 @@ Primero comparo lo que tiene cada uno.
 
 > 📸 **[AQUÍ CAPTURA 7 – OPCIONAL]** – Fotos de los cuatro productos (de la web del fabricante o de la tienda) para acompañar la tabla.
 > *(`capturas/captura7.png`)*
+![Captura del terminal powershell,datos del procesador](capturasdecomandos/Comparativa%20de%20periféricos_%20teclados%20y%20ratones.png )
 
 ---
 
@@ -220,6 +212,9 @@ Es decir, cada altavoz queda a unos 47 cm del centro del monitor. Como la pantal
 
 > 📸 **[AQUÍ CAPTURA 8 – OPCIONAL]** – El esquema del enunciado con las distancias anotadas encima (94 cm en la flecha vertical de la silla y 94 cm en la flecha horizontal entre altavoces).
 > *(`capturas/captura8.png`)*
+
+![Captura del terminal powershell,datos del procesador](capturasdecomandos/remove-completely-the-exercise.jpg )
+
 
 ---
 
