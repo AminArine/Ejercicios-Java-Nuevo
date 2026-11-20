@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tema 01 Relación 02 – Componentes y periféricos</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #222;
+    }
+    h1 { font-size: 1.4rem; border-bottom: 2px solid #333; padding-bottom: 8px; }
+    h2 { font-size: 1.15rem; margin-top: 2em; }
+    h3 { font-size: 1rem; margin-top: 1.5em; }
+    table { border-collapse: collapse; width: 100%; margin: 0.7em 0; font-size: 0.78rem; }
+    th, td { border: 1px solid #ccc; padding: 4px 7px; text-align: left; }
+    th { background: #f5f5f5; }
+    pre, code {
+      background: #f4f4f4;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 0.78em;
+    }
+    pre {
+      padding: 12px 16px;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+    code { padding: 2px 5px; border-radius: 3px; }
+    img { max-width: 100%; height: auto; margin: 12px 0; }
+    blockquote {
+      border-left: 4px solid #ccc;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #555;
+    }
+    hr { border: none; border-top: 1px solid #ddd; margin: 2em 0; }
+    ul { padding-left: 1.4em; }
+    li { margin-bottom: 0.4em; }
+  </style>
+</head>
+<body>
+
+<h1>Tema 01 Relación 02 – Componentes y periféricos</h1>
+
+<p><strong>Alumno:</strong> Mohamed Amin Ben Assad El Arine<br>
+<strong>Módulo:</strong> Sistemas informáticos<br>
+<strong>Curso:</strong> 1.º DAW – IES Murgi 2026-2027</p>
+
+<hr>
+
+<h2>Ejercicio 1.º – Identificación de componentes</h2>
+
+<h3>a) Comandos para identificar la RAM y el monitor</h3>
+
+<p>Para sacar la información desde la consola uso dos herramientas: el Símbolo del sistema (CMD) y PowerShell. En los dos casos se apoyan en WMI, que es la parte de Windows que guarda los datos del hardware.</p>
+
+<p><strong>Memoria RAM</strong> (me da fabricante, modelo, número de serie, capacidad y velocidad):</p>
+
+<ul>
+  <li>En CMD:
+    <pre>wmic memorychip get Manufacturer, PartNumber, SerialNumber,<br> Capacity, Speed</pre>
+  </li>
+  <li>En PowerShell:
+    <pre>Get-CimInstance Win32_PhysicalMemory | Select-Object Manufacturer,<br> PartNumber, SerialNumber, Capacity, Speed</pre>
+  </li>
+</ul>
+
+<p><img src="capturasdecomandos/Get-CimInstance%20Win32_PhysicalMemory.PNG" alt="Captura del terminal powershell,datos de la RAM" width="500" height="400"></p>
+
+<hr>
+
+<p><strong>Datos de mi RAM</strong></p>
+
+<table>
+  <tr><th>Dato</th><th>Valor</th></tr>
+  <tr><td>Fabricante</td><td>Silicon-Power</td></tr>
+  <tr><td>Modelo (PartNumber)</td><td>NO INFO</td></tr>
+  <tr><td>Número de serie</td><td>00000000</td></tr>
+  <tr><td>Capacidad</td><td>16 GB</td></tr>
+  <tr><td>Velocidad</td><td>2666 MHz</td></tr>
+</table>
+
+<hr>
+
+<p><strong>Monitor</strong> (fabricante, modelo y número de serie, más la definición de la pantalla):</p>
+
+<ul>
+  <li>En PowerShell, para fabricante, modelo y número de serie:
+    <pre>Get-CimInstance -Namespace root\wmi -ClassName WmiMonitorID | ForEach-Object {
+  [PSCustomObject]@{
+    Fabricante = -join ($_.ManufacturerName | Where-Object {$_ -ne 0} | ForEach-Object {[char]$_})
+    Modelo     = -join ($_.UserFriendlyName | Where-Object {$_ -ne 0} | ForEach-Object {[char]$_})
+    NumSerie   = -join ($_.SerialNumberID   | Where-Object {$_ -ne 0} | ForEach-Object {[char]$_})
+  }
+}</pre>
+    Estos datos vienen como códigos ASCII, por eso el comando los convierte a letras.
+  </li>
+  <li>En PowerShell, para la definición de la pantalla:
+    <pre>Get-CimInstance Win32_VideoController | Select-Object Name,<br> CurrentHorizontalResolution, CurrentVerticalResolution</pre>
+  </li>
+  <li>En CMD:
+    <pre>wmic path Win32_VideoController get Name, CurrentHorizontalResolution,<br> CurrentVerticalResolution
+wmic /namespace:\\root\wmi path WmiMonitorID get ManufacturerName, ProductCodeID,<br> SerialNumberID, UserFriendlyName</pre>
+    En el segundo comando los valores salen en decimal (códigos ASCII), así que habría que traducirlos a texto.
+  </li>
+</ul>
+
+<p><img src="capturasdecomandos/Modelomonitor.PNG" alt="Captura del terminal powershell,datos deL monitor" width="600"height="200"></p>
+
+<p><img src="capturasdecomandos/Resoluciondelapantalla.PNG" alt="Captura del terminal powershell,datos de la resolucion del monitor" width="600"height="200"></p>
+
+<hr>
+
+<p><strong>Datos de mi monitor</strong></p>
+
+<table>
+  <tr><th>Dato</th><th>Valor</th></tr>
+  <tr><td>Fabricante (código de 3 letras)</td><td>HSD</td></tr>
+  <tr><td>Modelo</td><td>HL247HPB</td></tr>
+  <tr><td>Número de serie</td><td>1234567890123</td></tr>
+  <tr><td>Definición de pantalla</td><td>1920 × 1080 píxeles</td></tr>
+</table>
+
+<h3>b) Identificar el procesador sin abrir el ordenador</h3>
+
+<p>Para ver el procesador con una sola instrucción uso:</p>
+
+<ul>
+  <li>En PowerShell:
+    <pre>Get-CimInstance Win32_Processor | Select-Object Name, Manufacturer, MaxClockSpeed,<br> L2CacheSize, L3CacheSize, NumberOfCores, NumberOfLogicalProcessors</pre>
+  </li>
+  <li>En CMD:
+    <pre>wmic cpu get Name, Manufacturer, MaxClockSpeed, L2CacheSize, L3CacheSize,<br> NumberOfCores, NumberOfLogicalProcessors</pre>
+  </li>
+</ul>
+
+<p>Otra forma muy cómoda es el Administrador de tareas ("Ctrl+Shift+Esc" → pestaña <em>Rendimiento</em> → <em>CPU</em>), donde aparecen también las cachés L1, L2 y L3.</p>
+
+<p><img src="capturasdecomandos/Procesador.PNG" alt="Captura del terminal powershell,datos del procesador" width="600"height="400"></p>
+<p><img src="capturasdecomandos/cacheprocesador.PNG" alt="Captura del terminal powershell,datos del procesador"  width="500"height="300"></p>
+
+<p><strong>¿Cuál es su fabricante, modelo y generación o familia?</strong><br>
+El fabricante es <strong>AMD</strong>, el modelo es <strong>Ryzen 3 PRO 4350G</strong> y pertenece a la <strong>serie 4000 (arquitectura Zen 2 / Renoir)</strong>.</p>
+
+<p><strong>¿Cuál es su velocidad máxima de reloj? ¿Está preparado para overclock?</strong><br>
+Su velocidad máxima es de <strong>3,80 GHz</strong> (base). El valor "MaxClockSpeed" que da Windows suele ser la frecuencia base, así que la frecuencia máxima en turbo es <strong>4,0 GHz</strong> (según la ficha oficial de AMD).<br>
+Sobre el overclock: en AMD Ryzen casi todos son desbloqueables. Mi procesador <strong>sí</strong> está preparado para overclock (aunque al ser modelo PRO es más habitual usarlo sin overclock).</p>
+
+<p><strong>¿Cuál es la capacidad de su memoria caché y de qué tipo es?</strong><br>
+Tiene <strong>2 MB de L2</strong> y <strong>4 MB de L3</strong> (la L1 aparece en el Administrador de tareas: <strong>256 kB</strong>). La caché es memoria <strong>SRAM</strong>, muy rápida, que se organiza en niveles: L1 (más pequeña y rápida, una por núcleo), L2 y L3 (más grande y compartida entre núcleos).</p>
+
+<p><strong>¿Cuántos núcleos tiene?</strong><br>
+Tiene <strong>4 núcleos físicos</strong> y <strong>8 procesadores lógicos (hilos)</strong>.</p>
+
+<hr>
+
+<h2>Ejercicio 2.º – Fuentes de alimentación</h2>
+
+<p>Para valorar los consejos me fijo en la eficiencia mínima que exige la certificación 80 Plus en cada nivel de carga (valores para 115 V):</p>
+
+<table>
+  <tr>
+    <th>Certificación</th>
+    <th>10 % de carga</th>
+    <th>20 % de carga</th>
+    <th>50 % de carga</th>
+    <th>100 % de carga</th>
+  </tr>
+  <tr>
+    <td>80 Plus Platinum</td>
+    <td>–</td>
+    <td>90 %</td>
+    <td>92 %</td>
+    <td>89 %</td>
+  </tr>
+  <tr>
+    <td>80 Plus Titanium</td>
+    <td>90 %</td>
+    <td>92 %</td>
+    <td>94 %</td>
+    <td>90 %</td>
+  </tr>
+</table>
+
+<blockquote>
+  <img src="capturasdecomandos/Infografía%2080%20PLUS_%20Eficiencia%20Energética%20a%20115%20V(1).png" alt="Captura del terminal powershell,datos del procesador" width="600"height="400">
+</blockquote>
+
+<h3>a) El consejo que le han dado a Lucía</h3>
+
+<p>Me parece <strong>un buen consejo</strong>. Lucía va a usar la fuente casi siempre al 100 % de su carga, y en ese punto la diferencia entre una Titanium (90 %) y una Platinum (89 %) es de solo <strong>un punto</strong>. Pagar mucho más por una Titanium para ganar un 1 % de eficiencia no compensa, y con la Platinum va a tener prácticamente el mismo rendimiento.</p>
+
+<p>Eso sí, le recomendaría escoger una fuente con algo más de potencia de la que necesita. Trabajar siempre al 100 % no es lo ideal, porque calienta más, hace más ruido y desgasta antes los componentes. Lo normal es que una fuente rinda mejor y dure más cerca del 50 % de carga.</p>
+
+<h3>b) El consejo que le han dado a Cecilio</h3>
+
+<p>Aquí <strong>no estoy tan de acuerdo</strong>. Cecilio va a usar la fuente muchas horas con una carga de entre el 20 % y el 50 %, y justo en ese tramo la Titanium rinde mejor: 92-94 % frente al 90-92 % de la Platinum, es decir, <strong>dos puntos</strong> de diferencia, el doble que en el caso de Lucía. Además, la Titanium es la única que garantiza un 90 % incluso con cargas muy bajas (10 %), algo que a él le pasará a veces cuando el equipo esté casi en reposo.</p>
+
+<p>Como su equipo está encendido muchas horas, esa mejora se acumula en consumo y en calor generado. Por eso la Titanium tiene más sentido para Cecilio que para Lucía, aunque la Platinum tampoco sería una mala compra si el presupuesto es lo que manda.</p>
+
+<hr>
+
+<h2>Ejercicio 3.º – Impresoras</h2>
+
+<p><strong>No me parece un buen consejo</strong>, por estos motivos:</p>
+
+<ul>
+  <li><strong>La grasa de litio mineral no es la adecuada para una impresora láser.</strong> Estas máquinas llevan engranajes y piezas de plástico y de goma, y con el tiempo las grasas minerales pueden hincharlos o deteriorarlos. La grasa de silicona es la que se usa precisamente porque no ataca esos materiales y aguanta bien los cambios de temperatura.</li>
+  <li><strong>El grado que propone es demasiado duro.</strong> La dureza de una grasa se mide con la escala NLGI, que va de 000 a 6. Un grado 3 es una grasa bastante espesa y un grado 5 es casi sólida. En engranajes pequeños que mueve un motor ligero, una grasa tan dura aumenta el rozamiento y fuerza el mecanismo.</li>
+  <li><strong>El técnico se contradice.</strong> Primero habla de un grado 5 y después de un grado 3, lo que me da poca confianza en que sepa qué lleva realmente la impresora.</li>
+  <li><strong>Que dure más no sirve de nada si daña la pieza.</strong> Además, en una láser hay zonas muy calientes, como la del fusor, donde hace falta una grasa específica para altas temperaturas. Y si sobra grasa, puede acabar manchando el tambor o el tóner.</li>
+  <li><strong>El precio de la impresora no decide qué grasa usar.</strong> Que cueste más de 1000 € no cambia los materiales de los que está hecha. Lo que hay que mirar es lo que indique el fabricante en el manual de mantenimiento.</li>
+</ul>
+
+<p>Mi conclusión es que seguiría usando <strong>grasa de silicona</strong> (o la grasa que especifique el fabricante) y que no seguiría el consejo del técnico de PC CT.</p>
+
+<hr>
+
+<h2>Ejercicio 4.º – El teclado y el ratón</h2>
+
+<p>Primero comparo lo que tiene cada uno.</p>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Características principales</th>
+  </tr>
+  <tr>
+    <td><strong>Newskill Gungnyr TKL Pro</strong> (teclado de Alfredo)</td>
+    <td>Teclado de formato TKL, es decir, sin teclado numérico. Es optomecánico, con interruptores Gateron Red de pulsación suave y lineal, cambiables (hot-swap). Va por cable USB (1,8 m), con iluminación RGB y orientado a gaming. Los interruptores están pensados para unos 100 millones de pulsaciones. Es más ruidoso que uno de membrana.</td>
+  </tr>
+  <tr>
+    <td><strong>Logitech MX Keys S</strong> (teclado de Elisa)</td>
+    <td>Teclado de tamaño completo, con teclado numérico. De perfil bajo y teclas cóncavas, de escritura rápida y silenciosa. Inalámbrico por Bluetooth, con receptor Logi Bolt, y puede emparejarse con hasta 3 dispositivos. Batería recargable por USB-C y retroiluminación inteligente.</td>
+  </tr>
+  <tr>
+    <td><strong>Microsoft Surface Mouse WS3-00006</strong> (ratón de Alfredo)</td>
+    <td>Bluetooth, ambidiestro y simétrico, de 3 botones. Es plano y ligero (unos 91 g), con sensor BlueTrack de 1000 dpi y clics silenciosos. Funciona con 2 pilas AAA y declara hasta 12 meses de batería.</td>
+  </tr>
+  <tr>
+    <td><strong>Microsoft Mobile Mouse 3600</strong> (ratón de Elisa)</td>
+    <td>Bluetooth, ambidiestro, de 3 botones con rueda de 4 direcciones. Es muy compacto (unos 95 × 57 mm) y pesa solo 63 g. Usa una pila AA y sensor BlueTrack de 1000 dpi. La rueda va "a pasos" y es algo más ruidosa.</td>
+  </tr>
+</table>
+
+<h3>Teclados: los dejaría como están</h3>
+
+<ul>
+  <li><strong>Elisa</strong> pasa muchas horas mecanografiando las sesiones del Congreso. El MX Keys S es muy buena opción: es silencioso, las teclas de perfil bajo cansan menos las muñecas y el teclado numérico le sirve para cifras y votaciones. Con un teclado optomecánico duro y ruidoso estaría peor.</li>
+  <li><strong>Alfredo</strong> supervisa nodos de fibra por toda la ciudad, así que escribe menos y apenas necesita la zona numérica. El Gungnyr TKL Pro es compacto, resistente y muy fiable. Aunque sea de aspecto gaming y vaya con cable, para su uso cumple perfectamente, y no hay un motivo claro para cambiarlo.</li>
+</ul>
+
+<h3>Ratones: aquí sí intercambiaría los componentes</h3>
+
+<ul>
+  <li><strong>Elisa</strong> pasa horas sentada, rodeada de gente y en un ambiente tranquilo. Le conviene el <strong>Surface Mouse</strong>: es algo más grande, así que cansa menos la mano, y tiene los clics más silenciosos.</li>
+  <li><strong>Alfredo</strong> se mueve por la ciudad, por lo que le encaja mejor el <strong>Mobile Mouse 3600</strong>, que es más pequeño y ligero y ocupa menos en la mochila.</li>
+</ul>
+
+<p><strong>Conclusión:</strong> les diría que mantengan los teclados y que <strong>se intercambien los ratones</strong>. La diferencia es pequeña, pero cada uno queda con el que mejor encaja con su forma de trabajar.</p>
+
+<blockquote>
+  <img src="capturasdecomandos/Comparativa%20de%20periféricos_%20teclados%20y%20ratones.png" alt="Captura del terminal powershell,datos del procesador" width="500"height="300">
+</blockquote>
+
+<hr>
+
+<h2>Ejercicio 5.º – Montaje de dispositivos</h2>
+
+<h3>a) Distancia mínima a la pantalla</h3>
+
+<p>Parto de estos datos: monitor de <strong>30 pulgadas</strong>, formato <strong>21:9</strong> y <strong>1080p</strong>. Al ser 21:9 con 1080 píxeles de alto, la resolución es de <strong>2560 × 1080</strong>.</p>
+
+<ol>
+  <li><strong>Tamaño real de la pantalla.</strong> La diagonal son 30" y la proporción 21:9, así que:
+    <ul>
+      <li>Ancho = 30 · 21 / √(21² + 9²) ≈ 27,6" ≈ <strong>70 cm</strong></li>
+      <li>Alto = 30 · 9 / √(21² + 9²) ≈ 11,8" ≈ <strong>30 cm</strong></li>
+    </ul>
+  </li>
+  <li><strong>Densidad de píxeles.</strong> La diagonal en píxeles es √(2560² + 1080²) ≈ 2778 px, así que tengo 2778 / 30 ≈ <strong>92,6 ppp</strong>. Cada píxel mide 25,4 mm / 92,6 ≈ <strong>0,274 mm</strong>.</li>
+  <li><strong>Distancia.</strong> El ojo humano distingue detalles de hasta 1 minuto de arco (1/60 de grado). A partir de esa distancia dejamos de ver los píxeles por separado y notamos toda la definición sin forzar la vista:
+    <p>d = 0,274 mm / tan(1/60°) = 0,274 / 0,000291 ≈ 942 mm</p>
+  </li>
+</ol>
+
+<p><strong>Resultado:</strong> debo sentarme como mínimo a unos <strong>94 cm</strong> (≈ 0,94 m) de la pantalla.</p>
+
+<h3>b) Separación de los altavoces</h3>
+
+<p>Para que se note bien el efecto estéreo, los altavoces y la persona deben formar un <strong>triángulo equilátero</strong> (ángulo de unos 60° entre los dos altavoces vistos desde mi posición). Eso significa que la separación entre altavoces tiene que ser igual a la distancia a la que estoy sentado:</p>
+
+<p><strong>Separación entre altavoces ≈ 94 cm.</strong></p>
+
+<p>Es decir, cada altavoz queda a unos 47 cm del centro del monitor. Como la pantalla mide unos 70 cm de ancho (35 cm hasta cada borde), cada altavoz quedará unos 12 cm por fuera del borde del monitor. Los colocaría a la altura de los oídos y ligeramente girados hacia mí.</p>
+
+<blockquote>
+  <img src="capturasdecomandos/remove-completely-the-exercise.jpg" alt="Captura del terminal powershell,datos del procesador" width="400"height="200">
+</blockquote>
+
+<hr>
+
+<h2>Fuentes consultadas</h2>
+
+<ul>
+  <li>Certificación 80 Plus (CLEAResult) y artículo de Tom's Hardware sobre los niveles 80 Plus.</li>
+  <li>Fichas de producto del fabricante: Newskill Gungnyr TKL Pro, Logitech MX Keys S, Microsoft Surface Mouse y Microsoft Bluetooth Mobile Mouse 3600.</li>
+</ul>
+
+</body>
+</html>

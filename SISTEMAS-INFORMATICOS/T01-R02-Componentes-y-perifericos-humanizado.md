@@ -94,7 +94,7 @@ Para ver el procesador con una sola instrucción uso:
   wmic cpu get Name, Manufacturer, MaxClockSpeed, L2CacheSize, L3CacheSize, NumberOfCores, NumberOfLogicalProcessors
   ```
 
-Otra forma muy cómoda es el Administrador de tareas (`Ctrl+Shift+Esc` → pestaña *Rendimiento* → *CPU*), donde aparecen también las cachés L1, L2 y L3.
+Otra forma muy cómoda es el Administrador de tareas ("Ctrl+Shift+Esc" → pestaña *Rendimiento* → *CPU*), donde aparecen también las cachés L1, L2 y L3.
 
 ![Captura del terminal powershell,datos del procesador](capturasdecomandos/Procesador.PNG )
 ![Captura del terminal powershell,datos del procesador](capturasdecomandos/cacheprocesador.PNG )
@@ -104,7 +104,7 @@ Otra forma muy cómoda es el Administrador de tareas (`Ctrl+Shift+Esc` → pesta
 El fabricante es **AMD**, el modelo es **Ryzen 3 PRO 4350G** y pertenece a la **serie 4000 (arquitectura Zen 2 / Renoir)**.
 
 **¿Cuál es su velocidad máxima de reloj? ¿Está preparado para overclock?**  
-Su velocidad máxima es de **3,80 GHz** (base). El valor `MaxClockSpeed` que da Windows suele ser la frecuencia base, así que la frecuencia máxima en turbo es **4,0 GHz** (según la ficha oficial de AMD).  
+Su velocidad máxima es de **3,80 GHz** (base). El valor "MaxClockSpeed" que da Windows suele ser la frecuencia base, así que la frecuencia máxima en turbo es **4,0 GHz** (según la ficha oficial de AMD).  
 Sobre el overclock: en AMD Ryzen casi todos son desbloqueables. Mi procesador **sí** está preparado para overclock (aunque al ser modelo PRO es más habitual usarlo sin overclock).
 
 **¿Cuál es la capacidad de su memoria caché y de qué tipo es?**  
