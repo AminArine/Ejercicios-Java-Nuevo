@@ -143,7 +143,3 @@ Además, los dos IDE tienen terminal integrada, así que puedo usar la terminal 
 **Recomendación:** como IDE principal para el equipo recomendaría **IntelliJ IDEA**. Para una aplicación de backend en Java tiene las mejores herramientas para refactorizar y depurar, y funciona igual en Windows, Linux y macOS. VS Code lo usaría para cosas rápidas o archivos sueltos, porque es más ligero. En los dos pondría el mismo ".editorconfig" para que todo el equipo tenga el mismo formato de código.
 
 ---
-
-## Capturas / evidencias
-
-La actividad indica que no hace falta cambiar nada del código ni de la configuración, así que no se piden capturas.
