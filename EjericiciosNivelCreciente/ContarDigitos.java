@@ -1,5 +1,3 @@
-package EjericiciosNivelCreciente;
-
 import java.util.Scanner;
 
 public class ContarDigitos {
@@ -8,15 +6,15 @@ public class ContarDigitos {
         int numero=0;
         System.out.println("Introduce un numero...");
         numero=sc.nextInt();
-        contarDigitos(numero);
+        System.out.println("Son :"+contarDigitos(numero)+" digitos.");
     }
      public static int contarDigitos(int n){
-        int contador=1;
-        for(int i=1;i<=contador;i++){
-            if(n<Math.pow(10,i)){
+        int contador=0;
+        for(int i=0;i<=n;i++){
+            if(n>=Math.pow(10,i)){
                 contador++;
             }
         }
-        return contador-1;
+        return contador;
      }
 }

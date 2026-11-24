@@ -1,5 +1,3 @@
-package EjericiciosNivelCreciente;
-
 import java.util.Scanner;
 
 public class Potencia {
@@ -10,6 +8,7 @@ public class Potencia {
     base=sc.nextInt();
     System.out.println("Introduce el exponente ...");
     exponente=sc.nextInt();
+    System.out.println("La valor de la potencia es : "+potencia(base, exponente));
     }
     public static int potencia(int base, int exponente) {
         if(base>0){

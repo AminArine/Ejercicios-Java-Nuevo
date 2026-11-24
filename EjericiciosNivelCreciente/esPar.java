@@ -1,5 +1,3 @@
-package EjericiciosNivelCreciente;
-
 import java.util.Scanner;
 
 public class esPar{

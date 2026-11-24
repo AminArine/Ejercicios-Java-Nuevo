@@ -1,5 +1,3 @@
-package EjericiciosNivelCreciente;
-
 import java.util.Scanner;
 
 public class SegundosAMinutos {
@@ -8,7 +6,7 @@ public class SegundosAMinutos {
     int num=0;
     System.out.println("Introduce los segundos a convertir ...");
     num=sc.nextInt();
-    segundosAMinutos(num);
+    System.out.println("Son "+segundosAMinutos(num)+" minutos.");
     }
     public static int segundosAMinutos(int num) {
         return num / 60;
